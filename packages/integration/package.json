@@ -1,0 +1,33 @@
+{
+  "name": "@choose-tech/astro",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Florian LEFEBVRE",
+  "license": "ISC",
+  "exports": {
+    ".": "./index.ts",
+    "./tailwind": "./tailwind.ts",
+    "./pages/index.astro": "./pages/index.astro",
+    "./pages/api/v1/categories.json.ts": "./pages/api/v1/categories.json.ts",
+    "./pages/api/v1/libraries.json.ts": "./pages/api/v1/libraries.json.ts"
+  },
+  "dependencies": {
+    "@astrojs/vercel": "^5.0.2",
+    "@fontsource-variable/jetbrains-mono": "^5.0.15",
+    "@fontsource-variable/plus-jakarta-sans": "^5.0.15",
+    "@tailwindcss/forms": "^0.5.6",
+    "astro": "^3.3.2",
+    "fuse.js": "^6.6.2",
+    "iconify-icon": "^1.0.8",
+    "sharp": "^0.32.6",
+    "tailwindcss": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.7"
+  }
+}

@@ -1,0 +1,55 @@
+---
+import type { Category } from "../../utils/get-categories";
+import { cleanQuery } from "../../utils/url";
+
+export interface Props {
+  category: Category;
+  isActive: boolean;
+}
+
+const { category, isActive } = Astro.props;
+
+const originalQ = Astro.url.searchParams.get("q");
+const newQuery = `category:${category.id}`;
+
+const q = originalQ
+  ? originalQ.includes(newQuery)
+    ? originalQ.replace(newQuery, "")
+    : `${originalQ} ${newQuery}`
+  : newQuery;
+---
+
+<a
+  href={`/?q=${encodeURIComponent(cleanQuery(q))}`}
+  class="contents"
+  transition:name={`sidebar-filter-${category.id}`}
+  transition:animate="initial"
+>
+  <label
+    class:list={[
+      "flex items-center justify-between space-x-4 border-b border-gray-800 p-4 transition-colors",
+      isActive
+        ? `bg-${category.color}-950/20 hover:bg-${category.color}-950/50`
+        : "hover:bg-gray-800",
+    ]}
+  >
+    <div class="flex items-center space-x-4">
+      <input
+        type="checkbox"
+        name=""
+        id=""
+        class:list={[
+          "form-checkbox pointer-events-none h-5 w-5 border-gray-700 bg-gray-950",
+          `text-${category.color}-400`,
+        ]}
+        disabled
+        checked={isActive}
+      />
+      <span class="text-gray-300">{category.name}</span>
+    </div>
+    <iconify-icon
+      icon={category.icon}
+      width="1.5rem"
+      class:list={[`text-${category.color}-400`]}></iconify-icon>
+  </label>
+</a>

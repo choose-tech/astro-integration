@@ -1,0 +1,161 @@
+---
+import { Image } from "astro:assets";
+import CategoryBadge from "./CategoryBadge.astro";
+import LibraryCardLink from "./LibraryCardLink.astro";
+import { formatNumber } from "../utils/format-number";
+import type { Library } from "../utils/get-libraries";
+import { cleanQuery } from "../utils/url";
+
+export interface Props {
+  libraries: Library[];
+  library: Library;
+  preloadImage?: boolean;
+}
+
+const { libraries, library, preloadImage = false } = Astro.props;
+
+const npmLink = library.packages.length === 0 ? null : library.packages[0].url;
+const ghLink = library.repo.url;
+
+const originalQ = Astro.url.searchParams.get("q");
+const newQuery = `implies:${library.id}`;
+
+const q = originalQ
+  ? originalQ.includes(newQuery)
+    ? originalQ
+    : `${originalQ} ${newQuery}`
+  : newQuery;
+---
+
+<div
+  class="flex h-full flex-col border border-gray-800 bg-gray-900 p-4"
+  transition:animate="initial"
+  transition:name={`library-${library.id}`}
+>
+  <div class="flex items-center justify-between">
+    <a
+      href={`/?q=${encodeURIComponent(cleanQuery(q))}`}
+      class="select-none transition-opacity hover:opacity-75"
+    >
+      <Image
+        src={library.logo}
+        alt=""
+        class="h-12 w-auto"
+        loading={preloadImage ? "eager" : "lazy"}
+      />
+      <span class="sr-only">Filter by {library.name}</span>
+    </a>
+    <div class="flex items-center">
+      {
+        npmLink && (
+          <LibraryCardLink href={npmLink} aria-label="Downloads last week">
+            <svg
+              slot="icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              class="h-5 w-5"
+            >
+              <path
+                fill="currentColor"
+                fill-rule="evenodd"
+                d="M12 2.25a.75.75 0 0 1 .75.75v11.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V3a.75.75 0 0 1 .75-.75Zm-9 13.5a.75.75 0 0 1 .75.75v2.25a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5V16.5a.75.75 0 0 1 1.5 0v2.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V16.5a.75.75 0 0 1 .75-.75Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            {formatNumber(library.npm.downloads!)}
+          </LibraryCardLink>
+        )
+      }
+      <LibraryCardLink href={ghLink} aria-label="Stars">
+        <svg
+          slot="icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          class="h-5 w-5"
+          ><path
+            fill="currentColor"
+            fill-rule="evenodd"
+            d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401l-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102l-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637l3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382l-1.831-4.401Z"
+            clip-rule="evenodd"></path></svg
+        >
+        {formatNumber(library.repo.stars)}
+      </LibraryCardLink>
+      <LibraryCardLink href={library.url} aria-label="Website">
+        <svg
+          slot="icon"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="h-5 w-5"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"
+          ></path>
+        </svg>
+      </LibraryCardLink>
+    </div>
+  </div>
+  <h2 class="mt-4 text-2xl font-bold text-gray-50">{library.name}</h2>
+  <p class="mt-2 text-sm font-medium text-gray-400">
+    {library.description}
+  </p>
+  <div class="mt-auto pt-4">
+    <div class="grid select-none grid-cols-2 gap-4 text-sm text-gray-400">
+      {
+        library.implies.length > 0 && (
+          <div>
+            <div>Implies</div>
+            <div class="-mb-1 mt-1 flex flex-wrap">
+              {library.implies
+                .map((id) => libraries.find((l) => l.id === id)!)
+                .map((lib) => (
+                  <a
+                    href={`/?q=${encodeURIComponent(lib.name)}`}
+                    class="mb-1 mr-1 transition-opacity hover:opacity-75"
+                  >
+                    <Image
+                      src={lib.logo}
+                      alt=""
+                      class="h-6 w-auto"
+                      loading={preloadImage ? "eager" : "lazy"}
+                    />
+                  </a>
+                ))}
+            </div>
+          </div>
+        )
+      }
+      {
+        library.equivalents.length > 0 && (
+          <div>
+            <div>Equivalents</div>
+            <div class="-mb-1 mt-1 flex flex-wrap">
+              {library.equivalents
+                .map((id) => libraries.find((l) => l.id === id)!)
+                .map((lib) => (
+                  <a
+                    href={`/?q=${encodeURIComponent(lib.name)}`}
+                    class="mb-1 mr-1 transition-opacity hover:opacity-75"
+                  >
+                    <Image
+                      src={lib.logo}
+                      alt=""
+                      class="h-6 w-auto"
+                      loading={preloadImage ? "eager" : "lazy"}
+                    />
+                  </a>
+                ))}
+            </div>
+          </div>
+        )
+      }
+    </div>
+    <div class="-mb-2 mt-3 flex flex-wrap">
+      {library.categories.map((category) => <CategoryBadge {category} />)}
+    </div>
+  </div>
+</div>

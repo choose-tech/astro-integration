@@ -1,0 +1,25 @@
+---
+export interface Props {
+  href: string;
+  "aria-label": string;
+}
+
+const { href, "aria-label": ariaLabel } = Astro.props;
+---
+
+<a
+  {href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="flex select-none items-center p-2 text-gray-200 transition-colors hover:bg-gray-800"
+>
+  <slot name="icon" />
+  {
+    Astro.slots.has("default") && (
+      <span class="ml-1 font-mono text-sm">
+        <slot />
+      </span>
+    )
+  }
+  <span class="sr-only">{ariaLabel}</span>
+</a>

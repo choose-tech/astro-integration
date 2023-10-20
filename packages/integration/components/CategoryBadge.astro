@@ -1,0 +1,33 @@
+---
+import type { Category } from "../utils/get-categories";
+import { cleanQuery } from "../utils/url";
+
+export interface Props {
+  category: Category;
+}
+
+const { category } = Astro.props;
+
+const originalQ = Astro.url.searchParams.get("q");
+const newQuery = `category:${category.id}`;
+
+const isActive = originalQ?.includes(newQuery) ?? false;
+
+const q = originalQ
+  ? originalQ.includes(newQuery)
+    ? originalQ.replace(newQuery, "")
+    : `${originalQ} ${newQuery}`
+  : newQuery;
+---
+
+<a
+  href={`/?q=${encodeURIComponent(cleanQuery(q))}`}
+  class:list={[
+    "mb-2 mr-2 flex select-none items-center px-2 py-1 text-sm font-medium text-gray-950 transition-opacity",
+    `bg-${category.color}-400`,
+    isActive ? "opacity-50 hover:opacity-75" : "hover:opacity-75",
+  ]}
+>
+  <iconify-icon icon={category.icon} class="mr-1 h-4 w-4"></iconify-icon>
+  <span>{category.name}</span>
+</a>

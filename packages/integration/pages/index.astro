@@ -1,0 +1,117 @@
+---
+import Fuse from "fuse.js";
+import Layout from "../components/Layout.astro";
+import LibraryCard from "../components/LibraryCard.astro";
+import { getLibraries } from "../utils/get-libraries";
+
+const q = Astro.url.searchParams.get("q");
+
+const libraries = await getLibraries();
+
+const detailedQ = q
+  ? (() => {
+      const terms = q.split(" ");
+      const implies: Array<string> = [];
+      const categories: Array<string> = [];
+      const searchTerms: Array<string> = [];
+
+      for (const term of terms) {
+        if (term.startsWith("implies:")) {
+          implies.push(term.split("implies:")[1]);
+        } else if (term.startsWith("category:")) {
+          categories.push(term.split("category:")[1]);
+        } else {
+          searchTerms.push(term);
+        }
+      }
+
+      return { raw: q, terms, implies, categories, searchTerms };
+    })()
+  : null;
+
+const _filteredLibraries = libraries.filter((lib) => {
+  if (!q) return true;
+
+  const { implies, categories } = detailedQ!;
+
+  if (implies.length > 0) {
+    if (implies.includes(lib.id)) {
+      return true;
+    }
+
+    if (lib.implies.length === 0) {
+      return false;
+    }
+
+    let hasMatch = false;
+
+    for (const implied of lib.implies) {
+      if (!hasMatch && implies.includes(implied)) {
+        hasMatch = true;
+      }
+    }
+
+    if (!hasMatch) return false;
+  }
+
+  if (categories.length > 0) {
+    if (lib.categories.length === 0) {
+      return false;
+    }
+
+    let hasMatch = false;
+
+    for (const category of lib.categories) {
+      if (!hasMatch && categories.includes(category.id)) {
+        hasMatch = true;
+      }
+    }
+
+    if (!hasMatch) return false;
+  }
+
+  return true;
+});
+
+const fuse = new Fuse(_filteredLibraries, {
+  keys: ["name"],
+  threshold: 0.2,
+  ignoreLocation: true,
+  isCaseSensitive: false,
+});
+
+const filteredLibraries =
+  q && detailedQ!.searchTerms.length !== 0
+    ? fuse.search(detailedQ!.searchTerms.join(" ")).map((e) => e.item)
+    : _filteredLibraries;
+---
+
+<Layout>
+  {
+    (q === null || q === "") && (
+      <div class="bg-gradient mb-6 p-4 text-gray-950">
+        <h3 class="text-lg font-bold">Disclaimer</h3>
+        <p>
+          See a library that's missing? Check out the GitHub repository and help
+          us add as many resources as possible!
+        </p>
+      </div>
+    )
+  }
+  {
+    filteredLibraries.length === 0 ? (
+      <div>No results</div>
+    ) : (
+      <>
+        <div class="mb-2 font-mono text-sm text-gray-400">
+          Showing {filteredLibraries.length} out of {libraries.length} libraries
+        </div>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+          {filteredLibraries.map((library, i) => (
+            <LibraryCard {libraries} {library} preloadImage={i <= 8} />
+          ))}
+        </div>
+      </>
+    )
+  }
+</Layout>

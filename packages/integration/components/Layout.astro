@@ -1,0 +1,71 @@
+---
+import "../style.css";
+import "@fontsource-variable/plus-jakarta-sans";
+import "@fontsource-variable/jetbrains-mono";
+import { ViewTransitions } from "astro:transitions";
+import Sidebar from "./Sidebar/Sidebar.astro";
+import Header from "./Header/Header.astro";
+import options from "virtual:choose-tech/options"
+
+const { title } = options
+
+export interface Props {
+  description?: string;
+}
+
+const {
+  description = "Hand-picked comparisons for your next project.",
+} = Astro.props;
+
+const { origin, href } = Astro.url;
+
+const ogImage = `${origin}/og.png`;
+
+const q = Astro.url.searchParams.get("q");
+---
+
+<html lang="en" class="h-full" transition:animate="none">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/logo-sm.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={href} />
+    <script>
+      import "iconify-icon";
+    </script>
+    <ViewTransitions />
+  </head>
+  <body class="flex h-full flex-col bg-gray-950 antialiased">
+    <div class="flex">
+      <div
+        class="hidden w-[--sidebar-width] shrink-0 flex-col border-r border-gray-800 bg-gray-900 md:flex"
+      >
+        <Sidebar />
+      </div>
+      <div class="flex-1">
+        <Header {q} />
+        <main class="p-6">
+          <slot />
+        </main>
+        <!-- TODO: find better way -->
+      </div>
+    </div>
+    <div class="hidden h-full md:block">
+      <div
+        class="h-full w-[--sidebar-width] border-r border-gray-800 bg-gray-900"
+      >
+      </div>
+    </div>
+  </body>
+</html>
