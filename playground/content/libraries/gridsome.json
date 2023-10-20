@@ -1,0 +1,13 @@
+{
+  "logo": "../../assets/content/libraries/gridsome.svg",
+  "name": "Gridsome",
+  "url": "https://gridsome.org/",
+  "repo": {
+    "owner": "gridsome",
+    "name": "gridsome"
+  },
+  "packages": ["gridsome", "@gridsome/cli"],
+  "equivalents": [],
+  "implies": ["vuejs"],
+  "categories": ["meta-framework"]
+}

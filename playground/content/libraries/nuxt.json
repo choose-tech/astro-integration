@@ -1,0 +1,13 @@
+{
+  "logo": "../../assets/content/libraries/nuxt.png",
+  "name": "Nuxt",
+  "url": "https://nuxt.com",
+  "repo": {
+    "owner": "nuxt",
+    "name": "nuxt"
+  },
+  "packages": ["nuxt"],
+  "equivalents": [],
+  "implies": ["vite", "vuejs"],
+  "categories": ["meta-framework"]
+}

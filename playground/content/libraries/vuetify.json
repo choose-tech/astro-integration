@@ -1,0 +1,13 @@
+{
+  "logo": "../../assets/content/libraries/vuetify.svg",
+  "name": "Vuetify",
+  "url": "https://vuetifyjs.com/",
+  "repo": {
+    "owner": "vuetifyjs",
+    "name": "vuetify"
+  },
+  "packages": ["vuetify"],
+  "equivalents": [],
+  "implies": ["vuejs"],
+  "categories": ["ui-kit"]
+}

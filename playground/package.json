@@ -1,0 +1,19 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "astro": "astro"
+  },
+  "keywords": [],
+  "author": "Florian LEFEBVRE",
+  "license": "ISC",
+  "dependencies": {
+    "@astrojs/tailwind": "^5.0.2",
+    "@choose-tech/astro": "workspace:*",
+    "astro": "^3.3.2",
+    "tailwindcss": "^3.3.3"
+  }
+}

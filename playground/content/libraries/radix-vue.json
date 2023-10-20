@@ -1,0 +1,13 @@
+{
+  "logo": "../../assets/content/libraries/radix-vue.svg",
+  "name": "Radix Vue",
+  "url": "https://www.radix-vue.com/",
+  "repo": {
+    "owner": "radix-vue",
+    "name": "radix-vue"
+  },
+  "packages": [],
+  "equivalents": [],
+  "implies": ["vuejs"],
+  "categories": ["ui-kit"]
+}

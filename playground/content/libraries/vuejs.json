@@ -1,0 +1,13 @@
+{
+  "logo": "../../assets/content/libraries/vuejs.png",
+  "name": "Vue.js",
+  "url": "https://vuejs.org",
+  "repo": {
+    "owner": "vuejs",
+    "name": "core"
+  },
+  "packages": ["vue"],
+  "equivalents": ["reactjs"],
+  "implies": [],
+  "categories": ["ui-framework"]
+}

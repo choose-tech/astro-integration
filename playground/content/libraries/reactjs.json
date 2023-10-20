@@ -1,0 +1,13 @@
+{
+  "logo": "../../assets/content/libraries/reactjs.png",
+  "name": "React",
+  "url": "https://react.dev/",
+  "repo": {
+    "owner": "facebook",
+    "name": "react"
+  },
+  "packages": ["react"],
+  "equivalents": ["vuejs"],
+  "implies": [],
+  "categories": ["ui-framework"]
+}

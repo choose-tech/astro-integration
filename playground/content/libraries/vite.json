@@ -1,0 +1,13 @@
+{
+  "logo": "../../assets/content/libraries/vite.png",
+  "name": "Vite",
+  "url": "https://vitejs.dev/",
+  "repo": {
+    "owner": "vitejs",
+    "name": "vite"
+  },
+  "packages": ["vite"],
+  "equivalents": [],
+  "implies": [],
+  "categories": ["bundler"]
+}

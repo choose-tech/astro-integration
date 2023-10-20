@@ -1,0 +1,13 @@
+{
+  "logo": "../../assets/content/libraries/remix.png",
+  "name": "Remix",
+  "url": "https://remix.run/",
+  "repo": {
+    "owner": "remix-run",
+    "name": "remix"
+  },
+  "packages": ["remix"],
+  "equivalents": ["nuxt", "nextjs"],
+  "implies": ["reactjs", "vite"],
+  "categories": ["meta-framework"]
+}

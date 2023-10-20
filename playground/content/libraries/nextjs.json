@@ -1,0 +1,13 @@
+{
+  "logo": "../../assets/content/libraries/nextjs.png",
+  "name": "Next.js",
+  "url": "https://nextjs.org/",
+  "repo": {
+    "owner": "vercel",
+    "name": "next.js"
+  },
+  "packages": ["next"],
+  "equivalents": ["nuxt"],
+  "implies": ["reactjs"],
+  "categories": ["meta-framework"]
+}

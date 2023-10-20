@@ -1,0 +1,13 @@
+{
+  "logo": "../../assets/content/libraries/tanstack-router.webp",
+  "name": "Tanstack Router",
+  "url": "https://tanstack.com/router",
+  "repo": {
+    "owner": "tanstack",
+    "name": "router"
+  },
+  "packages": ["@tanstack/react-router", "@tanstack/actions"],
+  "equivalents": [],
+  "implies": [],
+  "categories": ["router"]
+}

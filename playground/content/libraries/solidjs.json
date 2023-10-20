@@ -1,0 +1,13 @@
+{
+  "logo": "../../assets/content/libraries/solidjs.svg",
+  "name": "Solid JS",
+  "url": "https://www.solidjs.com/",
+  "repo": {
+    "owner": "solidjs",
+    "name": "solid"
+  },
+  "packages": ["solid-js"],
+  "equivalents": ["vuejs", "reactjs"],
+  "implies": [],
+  "categories": ["ui-framework"]
+}
