@@ -14,8 +14,8 @@ const filteredLibraries = await searchEngine.search(libraries)
 
 <Layout>
   {
-    (!searchQuery.isEmpty) && (
-      <div class="bg-gradient mb-6 p-4 text-gray-950">
+    (searchQuery.isEmpty) && (
+      <div class="bg-primary-500 mb-6 p-4 text-gray-950">
         <h3 class="text-lg font-bold">Disclaimer</h3>
         <p>
           See a library that's missing? Check out the GitHub repository and help

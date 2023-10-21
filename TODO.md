@@ -7,7 +7,7 @@
 - [x] fonts optimization
 - [x] metatags
 - [x] handle base for links
-- [ ] handle color
+- [x] handle color
 - [ ] figure out the srcDir issue
 - [ ] add link to root
 - [ ] publish

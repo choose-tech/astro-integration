@@ -7,7 +7,7 @@
 }
 
 html {
-  @apply selection:bg-secondary-400/80 overflow-y-scroll selection:text-gray-900 motion-safe:scroll-smooth;
+  @apply selection:bg-primary-400/80 overflow-y-scroll selection:text-gray-900 motion-safe:scroll-smooth;
 }
 
 [x-cloak] {
@@ -35,8 +35,4 @@ details,
 
 .form-radio:checked {
   background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23020617' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
-}
-
-.bg-gradient {
-  @apply from-primary-400 to-secondary-400 bg-gradient-to-tr;
 }

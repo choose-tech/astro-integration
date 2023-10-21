@@ -6,10 +6,23 @@ import { ViewTransitions } from "astro:transitions";
 import Sidebar from "./Sidebar/Sidebar.astro";
 import Header from "./Header/Header.astro";
 import options from "virtual:choose-tech/options";
+import { getColors, hexToHsl } from "../utils/color-palette";
 
 const { title, description } = options;
 const { origin, href } = Astro.url;
 const ogImage = `${origin}/og.png`;
+
+const colorPalette = getColors(options.color);
+const injectedStyle = `
+:root {
+  ${Object.entries(colorPalette)
+    .map(([k, v]) => {
+      const hsl = hexToHsl(v);
+      return `--primary-${k}: ${hsl[0]}deg ${hsl[1]}% ${hsl[2]}%;`;
+    })
+    .join("")}
+}
+`;
 ---
 
 <html lang="en" class="h-full" transition:animate="none">
@@ -36,6 +49,7 @@ const ogImage = `${origin}/og.png`;
       _Alpine.start();
     </script>
     <ViewTransitions />
+    <style set:html={injectedStyle}></style>
   </head>
   <body class="flex h-full flex-col bg-gray-950 antialiased">
     <div class="flex">

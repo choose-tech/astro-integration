@@ -11,7 +11,7 @@ export default defineConfig({
       base: "/js-libs",
       title: "JS Libs",
       description: "Hand-picked comparisons for your next project.",
-      color: "",
+      color: "#F7DF1E",
     }),
   ],
 });

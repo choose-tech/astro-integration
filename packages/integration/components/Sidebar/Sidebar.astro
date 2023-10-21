@@ -35,7 +35,7 @@ const categories = (await getCategories()).map((data) => ({
       .map(({ isActive, data }) => <SidebarFilter category={data} {isActive} />)
   }
 </div>
-<!-- <div class="my-4 bg-gradient p-4 text-gray-950">
+<!-- <div class="my-4 bg-primary-500 p-4 text-gray-950">
     <h3 class="text-base font-bold">Disclaimer</h3>
     <p class="text-sm">
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe corrupti
@@ -48,7 +48,7 @@ const categories = (await getCategories()).map((data) => ({
     >Made by <a
       href="https://github.com/florian-lefebvre"
       target="_blank"
-      class="bg-gradient bg-clip-text font-bold text-transparent transition-opacity hover:opacity-75"
+      class="bg-primary-500 bg-clip-text font-bold text-transparent transition-opacity hover:opacity-75"
       >Florian Lefebvre</a
     ></span
   >
