@@ -1,1 +1,1 @@
-export const INTEGRATION_PREFIX = "@choose-tech"
+export const INTEGRATION_PREFIX = "@choose-tech";

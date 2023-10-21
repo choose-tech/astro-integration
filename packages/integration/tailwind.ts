@@ -1,7 +1,9 @@
 import colors from "tailwindcss/colors";
 
-export const chooseTechPreset: import('tailwindcss').Config = {
-  content: ["./node_modules/@choose-tech/astro/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+export const chooseTechPreset: import("tailwindcss").Config = {
+  content: [
+    "./node_modules/@choose-tech/astro/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
+  ],
   safelist: [
     {
       pattern:

@@ -1,1 +1,1 @@
-export { collections } from "@choose-tech/astro/collections"
+export { collections } from "@choose-tech/astro/collections";

@@ -35,7 +35,7 @@ declare module "astro:content" {
         import("astro/zod").ZodLiteral<"webp">,
         import("astro/zod").ZodLiteral<"gif">,
         import("astro/zod").ZodLiteral<"svg">,
-        import("astro/zod").ZodLiteral<"avif">
+        import("astro/zod").ZodLiteral<"avif">,
       ]
     >;
   }>;
@@ -85,7 +85,7 @@ declare module "astro:content" {
 
   export function getEntryBySlug<
     C extends keyof ContentEntryMap,
-    E extends ValidContentEntrySlug<C> | (string & {})
+    E extends ValidContentEntrySlug<C> | (string & {}),
   >(
     collection: C,
     // Note that this has to accept a regular string too, for SSR
@@ -96,12 +96,12 @@ declare module "astro:content" {
 
   export function getDataEntryById<
     C extends keyof DataEntryMap,
-    E extends keyof DataEntryMap[C]
+    E extends keyof DataEntryMap[C],
   >(collection: C, entryId: E): Promise<CollectionEntry<C>>;
 
   export function getCollection<
     C extends keyof AnyEntryMap,
-    E extends CollectionEntry<C>
+    E extends CollectionEntry<C>,
   >(
     collection: C,
     filter?: (entry: CollectionEntry<C>) => entry is E
@@ -113,7 +113,7 @@ declare module "astro:content" {
 
   export function getEntry<
     C extends keyof ContentEntryMap,
-    E extends ValidContentEntrySlug<C> | (string & {})
+    E extends ValidContentEntrySlug<C> | (string & {}),
   >(entry: {
     collection: C;
     slug: E;
@@ -122,7 +122,7 @@ declare module "astro:content" {
     : Promise<CollectionEntry<C> | undefined>;
   export function getEntry<
     C extends keyof DataEntryMap,
-    E extends keyof DataEntryMap[C] | (string & {})
+    E extends keyof DataEntryMap[C] | (string & {}),
   >(entry: {
     collection: C;
     id: E;
@@ -131,7 +131,7 @@ declare module "astro:content" {
     : Promise<CollectionEntry<C> | undefined>;
   export function getEntry<
     C extends keyof ContentEntryMap,
-    E extends ValidContentEntrySlug<C> | (string & {})
+    E extends ValidContentEntrySlug<C> | (string & {}),
   >(
     collection: C,
     slug: E
@@ -140,7 +140,7 @@ declare module "astro:content" {
     : Promise<CollectionEntry<C> | undefined>;
   export function getEntry<
     C extends keyof DataEntryMap,
-    E extends keyof DataEntryMap[C] | (string & {})
+    E extends keyof DataEntryMap[C] | (string & {}),
   >(
     collection: C,
     id: E

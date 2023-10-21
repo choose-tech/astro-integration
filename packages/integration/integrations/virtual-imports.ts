@@ -9,7 +9,6 @@ export const vitePluginVirtualImports = (
   options: GlobalIntegrationOptions,
   { root, srcDir }: Pick<AstroConfig, "root" | "srcDir">
 ): NonNullable<ViteUserConfig["plugins"]>[number] => {
-
   const modules = {
     "virtual:choose-tech/options": `export default ${JSON.stringify(options)}`,
     "virtual:choose-tech/project-context": `export default ${JSON.stringify({
