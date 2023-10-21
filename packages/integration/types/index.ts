@@ -3,4 +3,5 @@ export type GlobalIntegrationOptions = {
   title: string;
   description: string;
   color: string;
+  repo: `${string}/${string}`
 };

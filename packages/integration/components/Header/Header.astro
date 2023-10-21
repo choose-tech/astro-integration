@@ -1,6 +1,7 @@
 ---
 import MobileSidebar from "../Sidebar/MobileSidebar.astro";
 import Search from "./Search.astro";
+import options from "virtual:choose-tech/options"
 ---
 
 <header
@@ -29,7 +30,7 @@ import Search from "./Search.astro";
       <span class="sr-only">Reset search</span>
     </a>
     <a
-      href="https://github.com/florian-lefebvre/js-libs"
+      href={`https://github.com/${options.repo}`}
       target="_blank"
       class="bg-primary-500 select-none p-2 text-lg font-semibold text-gray-950 transition-opacity hover:opacity-75"
     >

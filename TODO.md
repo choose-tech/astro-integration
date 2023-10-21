@@ -8,6 +8,8 @@
 - [x] metatags
 - [x] handle base for links
 - [x] handle color
+- [x] customize github link
 - [ ] figure out the srcDir issue
 - [ ] add link to root
+- [ ] README / docs
 - [ ] publish
