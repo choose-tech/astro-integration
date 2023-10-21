@@ -7,24 +7,14 @@ import Sidebar from "./Sidebar/Sidebar.astro";
 import Header from "./Header/Header.astro";
 import options from "virtual:choose-tech/options";
 
-const { title } = options;
-
-export interface Props {
-  description?: string;
-}
-
-const { description = "Hand-picked comparisons for your next project." } =
-  Astro.props;
-
+const { title, description } = options;
 const { origin, href } = Astro.url;
-
 const ogImage = `${origin}/og.png`;
 ---
 
 <html lang="en" class="h-full" transition:animate="none">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/logo-sm.svg" />
     <meta name="generator" content={Astro.generator} />

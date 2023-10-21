@@ -60,14 +60,14 @@ const defaultValue = searchQuery.query();
         log("navigate");
 
         defaultValue = value;
-        navigate(`/?q=${encodeURIComponent(value)}`);
+        navigate(`?q=${encodeURIComponent(value)}`);
       },
     }));
   });
   </script>
 
   <form
-    action="/"
+    action=""
     method="get"
     class="relative flex h-full flex-1 items-center"
     x-data="search"

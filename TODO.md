@@ -5,6 +5,9 @@
 - [x] mobile sidebar using alpinejs
 - [x] responsiveness
 - [x] fonts optimization
-- [ ] metatags
-- [ ] handle base for links
+- [x] metatags
+- [x] handle base for links
+- [ ] handle color
+- [ ] figure out the srcDir issue
+- [ ] add link to root
 - [ ] publish

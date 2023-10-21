@@ -7,6 +7,11 @@ export default defineConfig({
   srcDir: ".",
   integrations: [
     tailwind(),
-    chooseTechIntegration({ base: "/", title: "JS Libs", color: "" }),
+    chooseTechIntegration({
+      base: "/js-libs",
+      title: "JS Libs",
+      description: "Hand-picked comparisons for your next project.",
+      color: "",
+    }),
   ],
 });
