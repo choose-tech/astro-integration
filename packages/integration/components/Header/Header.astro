@@ -1,30 +1,11 @@
 ---
-// import Search from "./Search";
-
-interface Props {
-  q: string | null;
-}
-
-const { q } = Astro.props;
+import Search from './Search.astro';
 ---
 
 <header
   class="sticky top-0 z-20 flex h-[--header-height] items-center justify-between border-b border-gray-800 bg-gray-900 pr-6 shadow-2xl"
 >
-  <div>TEMP SEARCH</div>
-  <!-- <script>
-    document.addEventListener("astro:after-swap", () => {
-      const input = document.getElementById("search-input") as HTMLInputElement;
-      const focused = true;
-      if (focused) {
-        input.focus();
-        const temp = input.value;
-        input.value = "";
-        input.value = temp;
-      }
-    });
-  </script>
-  <Search defaultValue={q} client:load transition:persist /> -->
+  <Search />
   <div class="flex items-center space-x-2">
     <a
       href="/"

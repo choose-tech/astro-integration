@@ -1,5 +1,5 @@
 declare module "virtual:choose-tech/options" {
-  const Config: import("./types").GlobalIntegrationOptions;
+  const Config: import("../types").GlobalIntegrationOptions;
   export default Config;
 }
 declare module "virtual:choose-tech/project-context" {

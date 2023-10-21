@@ -1,0 +1,99 @@
+---
+import { SearchQuery } from "../../utils/search-query";
+
+const searchQuery = SearchQuery.fromSearchParams(Astro.url.searchParams);
+const defaultValue = searchQuery.query();
+---
+
+<div class="contents" transition:persist>
+  <script is:inline data-default-value={defaultValue}>
+  let defaultValue =
+    document.currentScript?.getAttribute("data-default-value") ?? "";
+
+  /** @param {any} data */
+  const log = (data) => console.log(`[SEARCH]`, data);
+
+  /** @param {string} href */
+  const navigate = (href) => {
+    const a = document.createElement("a");
+    Object.assign(a, { href, style: "display:none;" });
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
+
+  document.addEventListener("alpine:init", () => {
+    Alpine.data("search", () => ({
+      init() {
+        log("init");
+        this.$watch("value", (value) => {
+          this._navigate(value);
+        });
+
+        const { search } = window.location;
+        if (search.startsWith("?q=")) {
+          const q = decodeURIComponent(search.slice(3));
+          if (q !== this.value) {
+            this.value = q;
+          }
+        } else if (search === "") {
+          this.value = "";
+        }
+      },
+
+      /** @type string */
+      value: defaultValue,
+
+      /** @param {Event} e */
+      submit(e) {
+        const search = new URLSearchParams(
+          new FormData(e.currentTarget)
+        ).toString();
+
+        console.log(search)
+
+        this._navigate(search.slice(2));
+      },
+
+      /** @param {string} value */
+      _navigate(value) {
+        log("navigate");
+
+        defaultValue = value;
+        navigate(`/?q=${encodeURIComponent(value)}`);
+      },
+    }));
+  });
+  </script>
+
+  <form
+    action="/"
+    method="get"
+    class="relative flex h-full flex-1 items-center"
+    x-data="search"
+    x-on:submit.prevent="submit"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      class="absolute left-6 h-6 w-6 text-gray-200"
+    >
+      <path
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1.5"
+        d="m21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+      ></path>
+    </svg>
+    <input
+      type="search"
+      name="q"
+      x-model.debounce.300ms="value"
+      value={defaultValue}
+      class="form-input mr-6 h-full w-full border-4 border-transparent bg-transparent pl-14 font-mono !outline-none !ring-0 placeholder:select-none focus:border-blue-600 focus-visible:!outline-none"
+      placeholder="Start typing"
+    />
+  </form>
+</div>

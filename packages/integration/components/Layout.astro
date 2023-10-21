@@ -19,8 +19,6 @@ const { description = "Hand-picked comparisons for your next project." } =
 const { origin, href } = Astro.url;
 
 const ogImage = `${origin}/og.png`;
-
-const q = Astro.url.searchParams.get("q");
 ---
 
 <html lang="en" class="h-full" transition:animate="none">
@@ -42,6 +40,10 @@ const q = Astro.url.searchParams.get("q");
     <meta property="og:url" content={href} />
     <script>
       import "iconify-icon";
+      import _Alpine from "alpinejs";
+
+      window.Alpine = _Alpine;
+      _Alpine.start();
     </script>
     <ViewTransitions />
   </head>
@@ -53,7 +55,7 @@ const q = Astro.url.searchParams.get("q");
         <Sidebar />
       </div>
       <div class="flex-1">
-        <Header {q} />
+        <Header />
         <main class="p-6">
           <slot />
         </main>

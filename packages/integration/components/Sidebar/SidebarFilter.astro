@@ -1,6 +1,6 @@
 ---
 import type { Category } from "../../utils/get-categories";
-import { cleanQuery } from "../../utils/url";
+import { SearchQuery } from "../../utils/search-query";
 
 export interface Props {
   category: Category;
@@ -9,18 +9,12 @@ export interface Props {
 
 const { category, isActive } = Astro.props;
 
-const originalQ = Astro.url.searchParams.get("q");
-const newQuery = `category:${category.id}`;
-
-const q = originalQ
-  ? originalQ.includes(newQuery)
-    ? originalQ.replace(newQuery, "")
-    : `${originalQ} ${newQuery}`
-  : newQuery;
+const searchQuery = SearchQuery.fromSearchParams(Astro.url.searchParams);
+searchQuery.toggle("categories", category.id);
 ---
 
 <a
-  href={`/?q=${encodeURIComponent(cleanQuery(q))}`}
+  href={searchQuery.encodedQuery({ format: "url" })}
   class="contents"
   transition:name={`sidebar-filter-${category.id}`}
   transition:animate="initial"

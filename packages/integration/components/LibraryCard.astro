@@ -4,7 +4,7 @@ import CategoryBadge from "./CategoryBadge.astro";
 import LibraryCardLink from "./LibraryCardLink.astro";
 import { formatNumber } from "../utils/format-number";
 import type { Library } from "../utils/get-libraries";
-import { cleanQuery } from "../utils/url";
+import { SearchQuery } from "../utils/search-query";
 
 export interface Props {
   libraries: Library[];
@@ -17,14 +17,8 @@ const { libraries, library, preloadImage = false } = Astro.props;
 const npmLink = library.packages.length === 0 ? null : library.packages[0].url;
 const ghLink = library.repo.url;
 
-const originalQ = Astro.url.searchParams.get("q");
-const newQuery = `implies:${library.id}`;
-
-const q = originalQ
-  ? originalQ.includes(newQuery)
-    ? originalQ
-    : `${originalQ} ${newQuery}`
-  : newQuery;
+const searchQuery = SearchQuery.fromSearchParams(Astro.url.searchParams);
+searchQuery.toggle("implies", library.id);
 ---
 
 <div
@@ -34,7 +28,7 @@ const q = originalQ
 >
   <div class="flex items-center justify-between">
     <a
-      href={`/?q=${encodeURIComponent(cleanQuery(q))}`}
+      href={searchQuery.encodedQuery({ format: "url" })}
       class="select-none transition-opacity hover:opacity-75"
     >
       <Image
@@ -114,7 +108,7 @@ const q = originalQ
                 .map((id) => libraries.find((l) => l.id === id)!)
                 .map((lib) => (
                   <a
-                    href={`/?q=${encodeURIComponent(lib.name)}`}
+                    href={`/?q=${lib.name}`}
                     class="mb-1 mr-1 transition-opacity hover:opacity-75"
                   >
                     <Image
@@ -138,7 +132,7 @@ const q = originalQ
                 .map((id) => libraries.find((l) => l.id === id)!)
                 .map((lib) => (
                   <a
-                    href={`/?q=${encodeURIComponent(lib.name)}`}
+                    href={`/?q=${lib.name}`}
                     class="mb-1 mr-1 transition-opacity hover:opacity-75"
                   >
                     <Image

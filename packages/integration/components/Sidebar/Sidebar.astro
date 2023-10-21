@@ -2,18 +2,16 @@
 import SidebarFilter from "./SidebarFilter.astro";
 import { getCategories } from "../../utils/get-categories";
 import options from "virtual:choose-tech/options";
+import { SearchQuery } from "../../utils/search-query";
 
 const { title } = options;
 
-const originalQ = Astro.url.searchParams.get("q");
+const searchQuery = SearchQuery.fromSearchParams(Astro.url.searchParams);
 
-const rawCategories = await getCategories();
-const categories = rawCategories.map((c) => {
-  const newQuery = `category:${c.id}`;
-
-  const isActive = originalQ?.includes(newQuery) ?? false;
-  return { isActive, data: c };
-});
+const categories = (await getCategories()).map((data) => ({
+  isActive: searchQuery.categories.includes(data.id),
+  data,
+}));
 ---
 
 <a

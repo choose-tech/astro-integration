@@ -14,9 +14,10 @@ declare module "astro:content" {
   type Flatten<T> = T extends { [K: string]: infer U } ? U : never;
 
   export type CollectionKey = keyof AnyEntryMap;
-  export type CollectionEntry<C extends CollectionKey> = Flatten<
-    AnyEntryMap[C]
-  >;
+  // export type CollectionEntry<C extends CollectionKey> = Flatten<
+  //   AnyEntryMap[C]
+  // >;
+  export type CollectionEntry<C extends CollectionKey> = string
 
   export type ContentCollectionKey = keyof ContentEntryMap;
   export type DataCollectionKey = keyof DataEntryMap;
@@ -200,5 +201,5 @@ declare module "astro:content" {
 
   type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-  type ContentConfig = typeof import("./collections");
+  type ContentConfig = typeof import("../collections");
 }
