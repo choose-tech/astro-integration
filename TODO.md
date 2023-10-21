@@ -1,5 +1,5 @@
 - [x] fix `astro:content` typings in package
-- [ ] add back data integrations
+- [x] add back data integrations
 - [ ] setup prettier
 - [ ] search bar using alpinejs
 - [ ] mobile sidebar using alpinejs

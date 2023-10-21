@@ -11,6 +11,7 @@
   "license": "ISC",
   "exports": {
     ".": "./index.ts",
+    "./collections": "./collections.ts",
     "./tailwind": "./tailwind.ts",
     "./pages/index.astro": "./pages/index.astro",
     "./pages/api/v1/categories.json.ts": "./pages/api/v1/categories.json.ts",
