@@ -2,9 +2,9 @@
 - [x] add back data integrations
 - [x] setup prettier
 - [x] search bar using alpinejs
-- [ ] mobile sidebar using alpinejs
-- [ ] responsiveness
-- [ ] add fontaine
+- [x] mobile sidebar using alpinejs
+- [x] responsiveness
+- [x] fonts optimization
 - [ ] metatags
 - [ ] handle base for links
 - [ ] publish
