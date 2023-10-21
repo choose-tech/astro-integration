@@ -15,10 +15,10 @@ const categories = (await getCategories()).map((data) => ({
 ---
 
 <a
-  href="/"
+  href="?q="
   class="sticky top-0 z-10 flex h-[--header-height] select-none items-center border-b border-gray-800 bg-gray-900 px-4 transition-colors hover:bg-gray-800"
 >
-  <img src="/logo-lg.svg" alt="" />
+  <img src="/logo-sm.svg" alt="" />
   <span class="text-2xl font-bold">{title}</span>
 </a>
 <div class="sticky top-[--header-height] z-10 bg-gray-900">

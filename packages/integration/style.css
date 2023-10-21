@@ -10,6 +10,10 @@ html {
   @apply selection:bg-secondary-400/80 overflow-y-scroll selection:text-gray-900 motion-safe:scroll-smooth;
 }
 
+[x-cloak] {
+  display: none !important;
+}
+
 /* Focusable elements */
 a[href],
 button,

@@ -1,0 +1,92 @@
+---
+import Sidebar from "./Sidebar.astro";
+---
+
+<script is:inline>
+document.addEventListener("alpine:init", () => {
+    Alpine.data("sidebar", () => ({
+        open: false,
+
+        /** @param {boolean} open */
+        setOpen(open) {
+            this.open = open;
+        },
+    }));
+});
+</script>
+
+<div
+  x-data="sidebar"
+  x-on:keydown.window.escape="setOpen(false)"
+  x-on:sidebar-filter-applied="setOpen(false)"
+  class="contents"
+>
+  <button
+    x-on:click="setOpen(true)"
+    class="ml-6 select-none bg-gray-700 p-2 text-lg font-semibold text-gray-200 transition-opacity hover:opacity-75"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="h-6 w-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M3.75 9h16.5m-16.5 6.75h16.5"></path>
+    </svg>
+
+    <span class="sr-only">Toggle mobile sidebar</span>
+  </button>
+
+  <div
+    x-cloak
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-150"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    x-show="open"
+    class="fixed inset-0 z-50 bg-black/50"
+  >
+  </div>
+
+  <div
+    x-cloak
+    x-show="open"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="-translate-x-full"
+    x-transition:enter-end="translate-x-0"
+    x-transition:leave="transition ease-in duration-150"
+    x-transition:leave-start="translate-x-0"
+    x-transition:leave-end="-translate-x-full"
+    x-on:click.away="setOpen(false)"
+    class="fixed inset-y-0 left-0 z-50 w-[--sidebar-width] flex-col border-r border-gray-800 bg-gray-900"
+  >
+    <button
+      x-on:click="setOpen(false)"
+      class="absolute -right-3 top-3 translate-x-full select-none bg-gray-700 p-2 text-lg font-semibold text-gray-200 transition-opacity hover:opacity-75"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="h-6 w-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+
+      <span class="sr-only">Close</span>
+    </button>
+    <Sidebar />
+  </div>
+</div>

@@ -1,14 +1,16 @@
 ---
-import Search from './Search.astro';
+import MobileSidebar from "../Sidebar/MobileSidebar.astro";
+import Search from "./Search.astro";
 ---
 
 <header
   class="sticky top-0 z-20 flex h-[--header-height] items-center justify-between border-b border-gray-800 bg-gray-900 pr-6 shadow-2xl"
 >
+  <MobileSidebar />
   <Search />
   <div class="flex items-center space-x-2">
     <a
-      href="/"
+      href="?q="
       class="select-none bg-gray-700 p-2 text-lg font-semibold text-gray-200 transition-opacity hover:opacity-75"
     >
       <svg

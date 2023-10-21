@@ -18,6 +18,7 @@ searchQuery.toggle("categories", category.id);
   class="contents"
   transition:name={`sidebar-filter-${category.id}`}
   transition:animate="initial"
+  x-on:click="$dispatch('sidebar-filter-applied')"
 >
   <label
     class:list={[
