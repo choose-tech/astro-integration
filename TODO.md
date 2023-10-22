@@ -14,7 +14,7 @@
 - [x] Fix sidebar height issue
 - [x] create issues
 - [x] README / docs
-- [ ] Add LICENSE
-- [ ] Complete package.json
+- [x] Add LICENSE
+- [x] Complete package.json
 - [ ] publish
 - [ ] figure out the srcDir issue (https://github.com/withastro/astro/issues/8883)

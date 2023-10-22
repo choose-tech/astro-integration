@@ -1,14 +1,14 @@
 {
   "name": "@choose-tech/astro",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "Official Choose Tech Astro integration, which powers any comparison of the Choose Tech organization",
+  "scripts": {},
   "keywords": [],
-  "author": "Florian LEFEBVRE",
-  "license": "ISC",
+  "author": "Florian Lefebvre <contact@florian-lefebvre.dev>",
+  "license": "MIT",
+  "bugs": "https://github.com/choose-tech/astro-integration/issues",
+  "homepage": "https://github.com/choose-tech/astro-integration",
+  "type": "module",
   "exports": {
     ".": "./index.ts",
     "./collections": "./collections.ts",
@@ -16,6 +16,9 @@
     "./pages/index.astro": "./pages/index.astro",
     "./pages/api/v1/categories.json.ts": "./pages/api/v1/categories.json.ts",
     "./pages/api/v1/libraries.json.ts": "./pages/api/v1/libraries.json.ts"
+  },
+  "peerDependencies": {
+    "astro": "^3.3.2"
   },
   "dependencies": {
     "@astrojs/vercel": "^5.0.2",
