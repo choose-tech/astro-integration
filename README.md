@@ -1,4 +1,4 @@
-# @choose-tech/astro-integration
+# @choose-tech/astro
 
 This repository holds the code for the Choose Tech Astro integration, which powers any comparison of the Choose Tech organization.
 
