@@ -10,8 +10,6 @@ import { npmDataIntegration } from "./integrations/npm-data";
 export default function chooseTechIntegration(
   options: GlobalIntegrationOptions
 ): AstroIntegration {
-  const { base, title, color } = options;
-
   return {
     name: getIntegrationName("global"),
     hooks: {
@@ -35,10 +33,9 @@ export default function chooseTechIntegration(
         });
 
         const newConfig: AstroUserConfig = {
-          // TODO: take care of slashes
-          base,
-          trailingSlash: "ignore",
           //   srcDir: ".",
+          base: options.base,
+          trailingSlash: "always",
           output: "server",
           adapter: vercel(),
           vite: {

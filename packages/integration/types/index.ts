@@ -4,4 +4,5 @@ export type GlobalIntegrationOptions = {
   description: string;
   color: string;
   repo: `${string}/${string}`
+  logoFilename: `${string}.${string}`
 };

@@ -9,10 +9,11 @@ export default defineConfig({
     tailwind(),
     chooseTechIntegration({
       base: "/js-libs",
-      title: "JS Libs",
+      title: "JS Libraries",
       description: "Hand-picked comparisons for your next project.",
       color: "#F7DF1E",
-      repo: "choose-tech/astro-integration"
+      repo: "choose-tech/astro-integration",
+      logoFilename: "logo.svg"
     }),
   ],
 });

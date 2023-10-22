@@ -9,7 +9,14 @@
 - [x] handle base for links
 - [x] handle color
 - [x] customize github link
-- [ ] figure out the srcDir issue
-- [ ] add link to root
+- [x] check TODOs
+- [x] add link to root
+- [x] Fix sidebar height issue
+- [ ] figure out the srcDir issue (https://github.com/withastro/astro/issues/8883)
+- [ ] create issues
+  - [ ] implement sorting
+  - [ ] setup renovate
+  - [ ] refactor search logic
+  - [ ] improve filtering : exclude, neutral or include
 - [ ] README / docs
 - [ ] publish
