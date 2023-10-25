@@ -1,5 +1,4 @@
-import type { AstroIntegration } from "astro";
-import type { AstroUserConfig } from "astro/config";
+import type { AstroConfig, AstroIntegration } from "astro";
 import { githubDataIntegration } from "./integrations/github-data";
 import { getIntegrationName } from "./utils";
 import vercel from "@astrojs/vercel/serverless";
@@ -32,8 +31,8 @@ export default function chooseTechIntegration(
           prerender: true,
         });
 
-        const newConfig: AstroUserConfig = {
-          //   srcDir: ".",
+        const newConfig: Partial<AstroConfig> = {
+          srcDir: new URL(".", config.root),
           base: options.base,
           trailingSlash: "always",
           output: "server",

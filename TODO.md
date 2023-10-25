@@ -16,5 +16,8 @@
 - [x] README / docs
 - [x] Add LICENSE
 - [x] Complete package.json
-- [ ] publish
-- [ ] figure out the srcDir issue (https://github.com/withastro/astro/issues/8883)
+- [x] publish
+- [x] figure out the srcDir issue (https://github.com/withastro/astro/issues/8883)
+- [x] publish template
+- [ ] rework js-libs
+- [ ] add main website

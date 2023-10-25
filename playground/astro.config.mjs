@@ -3,8 +3,6 @@ import chooseTechIntegration from "@choose-tech/astro";
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
-  // TODO: move to integration
-  srcDir: ".",
   integrations: [
     tailwind(),
     chooseTechIntegration({
@@ -13,7 +11,7 @@ export default defineConfig({
       description: "Hand-picked comparisons for your next project.",
       color: "#F7DF1E",
       repo: "choose-tech/astro-integration",
-      logoFilename: "logo.svg"
+      logoFilename: "logo.svg",
     }),
   ],
 });
