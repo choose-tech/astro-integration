@@ -12,6 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "@choose-tech/astro": "workspace:*",
-    "astro": "^3.3.2"
+    "astro": "^3.3.4"
   }
 }
