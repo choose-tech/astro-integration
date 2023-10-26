@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev": "astro dev",
+    "build": "astro build",
     "astro": "astro"
   },
   "keywords": [],
   "author": "Florian LEFEBVRE",
   "license": "ISC",
   "dependencies": {
-    "@choose-tech/astro": "workspace:*",
-    "astro": "^3.3.4"
+    "@choose-tech/astro": "workspace:*"
   }
 }
