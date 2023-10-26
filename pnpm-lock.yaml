@@ -63,6 +63,9 @@ importers:
 
   playground:
     dependencies:
+      '@astrojs/netlify':
+        specifier: ^3.0.3
+        version: 3.0.3(astro@3.3.4)
       '@choose-tech/astro':
         specifier: workspace:*
         version: link:../packages/integration
