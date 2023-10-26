@@ -5,6 +5,7 @@ import vercel from "@astrojs/vercel/serverless";
 import { vitePluginVirtualImports } from "./integrations/virtual-imports";
 import type { GlobalIntegrationOptions } from "./types";
 import { npmDataIntegration } from "./integrations/npm-data";
+import tailwind from "@astrojs/tailwind"
 
 export default function chooseTechIntegration(
   options: GlobalIntegrationOptions
@@ -12,7 +13,9 @@ export default function chooseTechIntegration(
   return {
     name: getIntegrationName("global"),
     hooks: {
-      "astro:config:setup": ({ config, injectRoute, updateConfig }) => {
+      "astro:config:setup": async (...args) => {
+        const { config, injectRoute, updateConfig } = args[0];
+
         injectRoute({
           pattern: "/",
           entryPoint: "@choose-tech/astro/pages/index.astro",
@@ -47,7 +50,11 @@ export default function chooseTechIntegration(
               external: ["@choose-tech/collections"],
             },
           },
-          integrations: [githubDataIntegration(), npmDataIntegration()],
+          integrations: [
+            tailwind({ configFile: "node_modules/@choose-tech/astro/tailwind.ts", applyBaseStyles: false }),
+            githubDataIntegration(),
+            npmDataIntegration(),
+          ],
         };
 
         updateConfig(newConfig);

@@ -1,7 +1,8 @@
 import colors from "tailwindcss/colors";
 import defaultTheme from "tailwindcss/defaultTheme";
+import type { Config } from "tailwindcss";
 
-export const chooseTechPreset: import("tailwindcss").Config = {
+export default {
   content: [
     "./node_modules/@choose-tech/astro/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
   ],
@@ -41,4 +42,4 @@ export const chooseTechPreset: import("tailwindcss").Config = {
     },
   },
   plugins: [require("@tailwindcss/forms")({ strategy: "class" })],
-};
+} satisfies Config;

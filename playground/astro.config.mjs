@@ -1,10 +1,8 @@
 import { defineConfig } from "astro/config";
 import chooseTechIntegration from "@choose-tech/astro";
-import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   integrations: [
-    tailwind(),
     chooseTechIntegration({
       base: "/js-libs",
       title: "JS Libraries",
