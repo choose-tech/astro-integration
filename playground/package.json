@@ -12,6 +12,7 @@
   "author": "Florian LEFEBVRE",
   "license": "ISC",
   "dependencies": {
-    "@choose-tech/astro": "workspace:*"
+    "@choose-tech/astro": "workspace:*",
+    "astro": "^3.3.4"
   }
 }
