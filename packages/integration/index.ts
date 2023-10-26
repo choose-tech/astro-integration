@@ -1,11 +1,11 @@
 import type { AstroConfig, AstroIntegration } from "astro";
 import { githubDataIntegration } from "./integrations/github-data";
 import { getIntegrationName } from "./utils";
-import vercel from "@astrojs/vercel/serverless";
+import netlify from "@astrojs/netlify/functions";
 import { vitePluginVirtualImports } from "./integrations/virtual-imports";
 import type { GlobalIntegrationOptions } from "./types";
 import { npmDataIntegration } from "./integrations/npm-data";
-import tailwind from "@astrojs/tailwind"
+import tailwind from "@astrojs/tailwind";
 
 export default function chooseTechIntegration(
   options: GlobalIntegrationOptions
@@ -35,11 +35,12 @@ export default function chooseTechIntegration(
         });
 
         const newConfig: Partial<AstroConfig> = {
+          site: "https://choose-tech.com",
           srcDir: new URL(".", config.root),
           base: options.base,
           trailingSlash: "always",
           output: "server",
-          adapter: vercel(),
+          adapter: netlify(),
           vite: {
             plugins: [vitePluginVirtualImports(options, config)],
             ssr: {
@@ -51,7 +52,10 @@ export default function chooseTechIntegration(
             },
           },
           integrations: [
-            tailwind({ configFile: "node_modules/@choose-tech/astro/tailwind.ts", applyBaseStyles: false }),
+            tailwind({
+              configFile: "node_modules/@choose-tech/astro/tailwind.ts",
+              applyBaseStyles: false,
+            }),
             githubDataIntegration(),
             npmDataIntegration(),
           ],
