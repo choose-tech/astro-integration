@@ -1,0 +1,36 @@
+---
+import options from "virtual:choose-tech/options";
+---
+
+<footer class="mt-auto border-t border-gray-800 bg-gray-900">
+  <div
+    class="mx-auto flex max-w-7xl flex-col items-center justify-between px-6 py-4 sm:flex-row"
+  >
+    <a href="/" class="group select-none">
+      <img
+        src="/logo-lg.svg"
+        alt=""
+        class="h-12 transition-transform group-hover:scale-105"
+      />
+      <span class="sr-only">Home</span>
+    </a>
+
+    <div class="text-sm font-medium text-gray-300 max-sm:mt-4">
+      <a
+        href={`https://github.com/${options.repo}/blob/main/LICENSE`}
+        target="_blank"
+        class="text-white underline">MIT License</a
+      >. Copyright &copy; <span id="footer-date"></span>{" "}
+      <a
+        href="https://florian-lefebvre.dev"
+        target="_blank"
+        class="text-white underline">Florian Lefebvre</a
+      >
+    </div>
+  </div>
+</footer>
+
+<script is:inline>
+const el = document.getElementById("footer-date");
+el.innerText = new Date().getFullYear();
+</script>

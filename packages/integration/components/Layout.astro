@@ -7,6 +7,7 @@ import Sidebar from "./Sidebar/Sidebar.astro";
 import Header from "./Header/Header.astro";
 import options from "virtual:choose-tech/options";
 import { getColors, hexToHsl } from "../utils/color-palette";
+import Footer from "./Footer.astro";
 
 const { title, description } = options;
 const { origin, href } = Astro.url;
@@ -62,17 +63,18 @@ const injectedStyle = `
       )
     }
   </head>
-  <body class="flex h-full flex-col bg-gray-950 antialiased">
+  <body
+    class="flex min-h-full flex-col bg-gray-950 antialiased md:ml-[--sidebar-width]"
+  >
     <div
       class="fixed inset-0 right-auto hidden w-[--sidebar-width] flex-col border-r border-gray-800 bg-gray-900 md:flex"
     >
       <Sidebar />
     </div>
-    <div class="md:ml-[--sidebar-width]">
-      <Header />
-      <main class="p-6">
-        <slot />
-      </main>
-    </div>
+    <Header />
+    <main class="p-6">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
