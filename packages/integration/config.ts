@@ -19,11 +19,6 @@ export const defineConfig = (
     output: "server",
     adapter: netlify(),
     vite: {
-      // build: {
-      //   rollupOptions: {
-      //     external: ["@astrojs/netlify/netlify-functions.js"],
-      //   },
-      // },
       ssr: {
         noExternal: [
           "@fontsource-variable/plus-jakarta-sans",
