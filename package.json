@@ -3,11 +3,13 @@
   "packageManager": "pnpm@8.9.2",
   "scripts": {
     "playground:dev": "pnpm --filter playground dev",
-    "format": "prettier . -w && prettier -w ./**/*.astro"
+    "format": "prettier . -w && prettier -w ./**/*.astro",
+    "script:release": "node ./scripts/release.mjs"
   },
   "devDependencies": {
     "prettier": "^3.0.3",
     "prettier-plugin-astro": "^0.12.1",
     "prettier-plugin-tailwindcss": "^0.5.6"
-  }
+  },
+  "version": "1.0.0"
 }
