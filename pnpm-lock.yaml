@@ -53,6 +53,9 @@ importers:
       tailwindcss:
         specifier: ^3.3.5
         version: 3.3.5
+      theme-colors:
+        specifier: ^0.1.0
+        version: 0.1.0
     devDependencies:
       '@types/alpinejs':
         specifier: ^3.13.3
@@ -3729,6 +3732,10 @@ packages:
       b4a: 1.6.4
       fast-fifo: 1.3.2
       streamx: 2.15.1
+    dev: false
+
+  /theme-colors@0.1.0:
+    resolution: {integrity: sha512-6gTEHQqWlQNiOEGHCSSQmU//E5SnXHJ4H7oHQOD8x77CvNYNQAmt73dqR71mzw5ULV87zaHLxK5pIBnsToFuZw==}
     dev: false
 
   /thenify-all@1.6.0:

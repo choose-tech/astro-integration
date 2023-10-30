@@ -6,21 +6,17 @@ import { ViewTransitions } from "astro:transitions";
 import Sidebar from "./Sidebar/Sidebar.astro";
 import Header from "./Header/Header.astro";
 import options from "virtual:choose-tech/options";
-import { getColors, hexToHsl } from "../utils/color-palette";
+import palette from "virtual:choose-tech/color-palette";
 import Footer from "./Footer.astro";
 
 const { title, description } = options;
 const { origin, href } = Astro.url;
 const ogImage = `${origin}/og.png`;
 
-const colorPalette = getColors(options.color);
 const injectedStyle = `
 :root {
-  ${Object.entries(colorPalette)
-    .map(([k, v]) => {
-      const hsl = hexToHsl(v);
-      return `--primary-${k}: ${hsl[0]}deg ${hsl[1]}% ${hsl[2]}%;`;
-    })
+  ${Object.entries(palette)
+    .map(([k, v]) => `--primary-${k}: ${v.join(" ")};`)
     .join("")}
 }
 `;

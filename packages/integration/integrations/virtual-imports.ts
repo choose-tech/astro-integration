@@ -1,5 +1,6 @@
 import type { AstroConfig, ViteUserConfig } from "astro";
 import type { GlobalIntegrationOptions } from "../types";
+import { getColorPalette } from "../utils/color-palette";
 
 function resolveVirtualModuleId<T extends string>(id: T): `\0${T}` {
   return `\0${id}`;
@@ -15,6 +16,9 @@ export const vitePluginVirtualImports = (
       root,
       srcDir,
     })}`,
+    "virtual:choose-tech/color-palette": `export default ${JSON.stringify(
+      getColorPalette(options.color)
+    )}`,
   } satisfies Record<string, string>;
 
   /** Mapping names prefixed with `\0` to their original form. */
