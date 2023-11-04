@@ -22,7 +22,7 @@
     "./pages/api/v1/libraries.json.ts": "./pages/api/v1/libraries.json.ts"
   },
   "peerDependencies": {
-    "astro": "^3.3.4"
+    "astro": "^3.4.3"
   },
   "dependencies": {
     "@astrojs/netlify": "^3.0.4",
