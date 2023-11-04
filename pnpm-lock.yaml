@@ -75,6 +75,9 @@ importers:
       astro:
         specifier: ^3.4.3
         version: 3.4.3(@types/node@20.8.10)
+      sharp:
+        specifier: ^0.32.6
+        version: 0.32.6
 
 packages:
 
