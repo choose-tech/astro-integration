@@ -7,6 +7,9 @@ import netlify from "@astrojs/netlify/functions";
 import { vitePluginVirtualImports } from "./integrations/virtual-imports";
 import { npmDataIntegration } from "./integrations/npm-data";
 import tailwind from "@astrojs/tailwind";
+import fsp from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 export const defineConfig = (
   options: GlobalIntegrationOptions
@@ -18,9 +21,6 @@ export const defineConfig = (
     trailingSlash: "always",
     output: "server",
     adapter: netlify(),
-    build: {
-      assets: `${options.name}/_astro`,
-    },
     vite: {
       ssr: {
         noExternal: [
@@ -66,6 +66,15 @@ export const defineConfig = (
             };
 
             updateConfig(newConfig);
+          },
+          "astro:build:done": async ({ dir }) => {
+            const baseDir = fileURLToPath(dir);
+
+            const oldDir = path.join(baseDir, "_astro");
+            const newDir = path.join(baseDir, options.name);
+
+            await fsp.mkdir(newDir);
+            await fsp.rename(oldDir, path.join(newDir, "_astro"));
           },
         },
       },
