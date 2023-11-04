@@ -15,7 +15,7 @@ searchQuery.toggle("categories", category.id);
 
 <a
   href={searchQuery.encodedQuery({ format: "url" })}
-  class="contents"
+  class="block"
   transition:name={`sidebar-filter-${category.id}`}
   transition:animate="initial"
   x-on:click="$dispatch('sidebar-filter-applied')"

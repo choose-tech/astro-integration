@@ -12,9 +12,7 @@ const defaultValue = searchQuery.query();
 
     /** @param {any} data */
     const log = (data) => {
-      if (import.meta.env.DEV) {
-        console.log(`[SEARCH]`, data);
-      }
+      console.log(`[SEARCH]`, data);
     };
 
     /** @param {string} href */
