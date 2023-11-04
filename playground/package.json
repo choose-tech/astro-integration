@@ -12,8 +12,8 @@
   "author": "Florian LEFEBVRE",
   "license": "ISC",
   "dependencies": {
-    "@astrojs/netlify": "^3.0.3",
+    "@astrojs/netlify": "^3.0.4",
     "@choose-tech/astro": "workspace:*",
-    "astro": "^3.3.4"
+    "astro": "^3.4.3"
   }
 }
