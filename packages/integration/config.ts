@@ -14,7 +14,7 @@ export const defineConfig = (
   return {
     site: `https://${options.name}.choose-tech.com`,
     srcDir: ".",
-    base: "/",
+    base: `/${options.name}`,
     trailingSlash: "always",
     output: "server",
     adapter: netlify(),

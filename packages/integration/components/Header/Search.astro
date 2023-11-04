@@ -7,63 +7,67 @@ const defaultValue = searchQuery.query();
 
 <div class="contents" transition:persist>
   <script is:inline data-default-value={defaultValue}>
-  let defaultValue =
-    document.currentScript?.getAttribute("data-default-value") ?? "";
+    let defaultValue =
+      document.currentScript?.getAttribute("data-default-value") ?? "";
 
-  /** @param {any} data */
-  const log = (data) => console.log(`[SEARCH]`, data);
+    /** @param {any} data */
+    const log = (data) => {
+      if (import.meta.env.DEV) {
+        console.log(`[SEARCH]`, data);
+      }
+    };
 
-  /** @param {string} href */
-  const navigate = (href) => {
-    const a = document.createElement("a");
-    Object.assign(a, { href, style: "display:none;" });
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-  };
+    /** @param {string} href */
+    const navigate = (href) => {
+      const a = document.createElement("a");
+      Object.assign(a, { href, style: "display:none;" });
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    };
 
-  document.addEventListener("alpine:init", () => {
-    Alpine.data("search", () => ({
-      init() {
-        log("init");
-        this.$watch("value", (value) => {
-          this._navigate(value);
-        });
+    document.addEventListener("alpine:init", () => {
+      Alpine.data("search", () => ({
+        init() {
+          log("init");
+          this.$watch("value", (value) => {
+            this._navigate(value);
+          });
 
-        const { search } = window.location;
-        if (search.startsWith("?q=")) {
-          const q = decodeURIComponent(search.slice(3));
-          if (q !== this.value) {
-            this.value = q;
+          const { search } = window.location;
+          if (search.startsWith("?q=")) {
+            const q = decodeURIComponent(search.slice(3));
+            if (q !== this.value) {
+              this.value = q;
+            }
+          } else if (search === "") {
+            this.value = "";
           }
-        } else if (search === "") {
-          this.value = "";
-        }
-      },
+        },
 
-      /** @type string */
-      value: defaultValue,
+        /** @type string */
+        value: defaultValue,
 
-      /** @param {Event} e */
-      submit(e) {
-        const search = new URLSearchParams(
-          new FormData(e.currentTarget)
-        ).toString();
+        /** @param {Event} e */
+        submit(e) {
+          const search = new URLSearchParams(
+            new FormData(e.currentTarget)
+          ).toString();
 
-        console.log(search)
+          console.log(search);
 
-        this._navigate(search.slice(2));
-      },
+          this._navigate(search.slice(2));
+        },
 
-      /** @param {string} value */
-      _navigate(value) {
-        log("navigate");
+        /** @param {string} value */
+        _navigate(value) {
+          log("navigate");
 
-        defaultValue = value;
-        navigate(`?q=${encodeURIComponent(value)}`);
-      },
-    }));
-  });
+          defaultValue = value;
+          navigate(`?q=${encodeURIComponent(value)}`);
+        },
+      }));
+    });
   </script>
 
   <form
