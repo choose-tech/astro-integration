@@ -12,9 +12,9 @@ export const defineConfig = (
   options: GlobalIntegrationOptions
 ): AstroUserConfig => {
   return {
-    site: "https://choose-tech.com",
+    site: `https://${options.name}.choose-tech.com`,
     srcDir: ".",
-    base: options.base,
+    base: "/",
     trailingSlash: "always",
     output: "server",
     adapter: netlify(),

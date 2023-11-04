@@ -1,11 +1,10 @@
 ---
 interface Props {
   href: string;
+  external?: boolean
 }
 
-const { href } = Astro.props;
-
-const external = !href.startsWith("/");
+const { href, external = false } = Astro.props;
 ---
 
 <a

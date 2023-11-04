@@ -1,7 +1,7 @@
 import { defineConfig } from "@choose-tech/astro/config";
 
 export default defineConfig({
-  base: "/js-libs",
+  name: "js-libs",
   title: "JS Libraries",
   description: "Hand-picked comparisons for your next project.",
   color: "#F7DF1E",

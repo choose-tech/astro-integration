@@ -1,5 +1,5 @@
 export type GlobalIntegrationOptions = {
-  base: `/${string}`;
+  name: string;
   title: string;
   description: string;
   color: string;
