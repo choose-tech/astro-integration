@@ -65,7 +65,7 @@ document.addEventListener("alpine:init", () => {
     x-transition:leave-start="translate-x-0"
     x-transition:leave-end="-translate-x-full"
     x-on:click.away="setOpen(false)"
-    class="fixed inset-y-0 left-0 z-50 flex w-[--sidebar-width] flex-col border-r border-gray-800 bg-gray-900"
+    class="fixed overflow-y-auto inset-y-0 left-0 z-50 flex w-[--sidebar-width] flex-col border-r border-gray-800 bg-gray-900"
   >
     <button
       x-on:click="setOpen(false)"
