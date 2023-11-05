@@ -15,7 +15,7 @@ export type Library = {
     stars: number;
     description: string;
     url: string;
-  };
+  } | null;
   packages: Array<{
     name: string;
     downloads: number;
@@ -32,10 +32,10 @@ export type Library = {
 export const getLibrary = async (id: string) => {
   const { data } = (await getEntry("libraries", id))!;
 
-  const { data: githubData } = (await getEntry(
+  const githubEntry = data.repo ? (await getEntry(
     "github",
     `${data.repo.owner}/${data.repo.name}`
-  ))!;
+  )) : undefined;
 
   const packages = (
     await Promise.all(
@@ -55,16 +55,16 @@ export const getLibrary = async (id: string) => {
     id,
     logo: data.logo,
     name: data.name,
-    description: data.description ?? githubData.description,
+    description: data.description ?? githubEntry?.data.description ?? '',
     url: data.url,
-    repo: {
-      id: githubData.id,
+    repo: githubEntry ? {
+      id: githubEntry.data.id,
       owner: data.repo.owner,
       name: data.repo.name,
-      stars: githubData.stars,
-      description: githubData.description,
+      stars: githubEntry.data.stars,
+      description: githubEntry.data.description,
       url: `https://github.com/${data.repo.owner}/${data.repo.name}`,
-    },
+    } : null,
     packages,
     npm: {
       downloads:

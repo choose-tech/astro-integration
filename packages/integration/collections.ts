@@ -39,7 +39,7 @@ export const collections = {
         repo: z.object({
           owner: z.string(),
           name: z.string(),
-        }),
+        }).optional(),
         packages: z.array(z.string()),
         equivalents: z.array(reference("libraries")),
         implies: z.array(reference("libraries")),

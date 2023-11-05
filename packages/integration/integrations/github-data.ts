@@ -12,7 +12,7 @@ export const githubDataIntegration = () => {
     destinationCollectionPath: GITHUB_PATH,
     getEntrySlugs: (fileContent) => {
       const { repo } = fileContent;
-      return [`${repo.owner}/${repo.name}`];
+      return repo ? [`${repo.owner}/${repo.name}`] : [];
     },
     fetchData: async (slug) => {
       const { repo: data } = await fetch(`https://ungh.cc/repos/${slug}`).then(
