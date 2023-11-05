@@ -1,3 +1,9 @@
 {
-    "alpine-intellisense.settings.languageScopes": "html,astro"
+    "alpine-intellisense.settings.languageScopes": "html,astro",
+    "tailwindCSS.classAttributes": [
+        "class",
+        "className",
+        "ngClass",
+        "class:list"
+    ]
 }

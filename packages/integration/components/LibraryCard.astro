@@ -149,7 +149,7 @@ searchQuery.toggle("implies", library.id);
       }
     </div>
     <div class="-mb-2 mt-3 flex flex-wrap">
-      {library.categories.map((category) => <CategoryBadge {category} />)}
+      {library.categories.sort((a, b) => a.name.localeCompare(b.name)).map((category) => <CategoryBadge {category} />)}
     </div>
   </div>
 </div>

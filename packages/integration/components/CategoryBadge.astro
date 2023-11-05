@@ -1,6 +1,7 @@
 ---
 import type { Category } from "../utils/get-categories";
 import { SearchQuery } from "../utils/search-query";
+import { Preferences } from "../utils/preferences";
 
 export interface Props {
   category: Category;
@@ -11,16 +12,36 @@ const { category } = Astro.props;
 const searchQuery = SearchQuery.fromSearchParams(Astro.url.searchParams);
 const isActive = searchQuery.categories.includes(category.id);
 searchQuery.toggle("categories", category.id);
+
+const preferences = new Preferences(Astro.cookies);
+const { showCategoryName } = preferences.get();
 ---
 
 <a
   href={searchQuery.encodedQuery({ format: "url" })}
   class:list={[
-    "mb-2 mr-2 flex select-none items-center px-2 py-1 text-sm font-medium text-gray-950 transition-opacity",
+    "group relative mb-2 mr-2 flex select-none items-center text-gray-950 transition-opacity hover:bg-opacity-75",
     `bg-${category.color}-400`,
-    isActive ? "opacity-50 hover:opacity-75" : "hover:opacity-75",
+    isActive && "bg-opacity-50",
+    showCategoryName ? "px-2 py-1 text-sm font-medium" : "p-1",
   ]}
 >
-  <iconify-icon icon={category.icon} class="mr-1 h-4 w-4"></iconify-icon>
-  <span>{category.name}</span>
+  <iconify-icon
+    icon={category.icon}
+    class:list={[
+      "h-4 w-4 transition-opacity group-hover:opacity-75",
+      isActive && "opacity-50",
+      showCategoryName && "mr-1",
+    ]}></iconify-icon>
+  <span class:list={[!showCategoryName && "sr-only"]}>{category.name}</span>
+  <div
+    class:list={[
+      "absolute text-sm bottom-[calc(100%+0.5rem)] left-1/2 z-50 -translate-x-1/2 whitespace-nowrap border border-gray-700 bg-gray-800 px-2 py-1 text-gray-200 shadow transition-opacity",
+      showCategoryName
+        ? "hidden"
+        : "invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus:visible",
+    ]}
+  >
+    {category.name}
+  </div>
 </a>

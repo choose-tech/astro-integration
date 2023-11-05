@@ -19,7 +19,8 @@
     "./tailwind": "./tailwind.ts",
     "./pages/index.astro": "./pages/index.astro",
     "./pages/api/v1/categories.json.ts": "./pages/api/v1/categories.json.ts",
-    "./pages/api/v1/libraries.json.ts": "./pages/api/v1/libraries.json.ts"
+    "./pages/api/v1/libraries.json.ts": "./pages/api/v1/libraries.json.ts",
+    "./pages/api/preferences.ts": "./pages/api/preferences.ts"
   },
   "peerDependencies": {
     "astro": "^3.4.3"

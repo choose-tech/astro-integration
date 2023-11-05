@@ -9,5 +9,22 @@
   "packages": ["gridsome", "@gridsome/cli"],
   "equivalents": [],
   "implies": ["vuejs"],
-  "categories": ["meta-framework"]
+  "categories": [
+    "meta-framework",
+    "styled",
+    "imported",
+    "tailwind-css",
+    "components",
+    "free",
+    "fully-accessible",
+    "semantic-colors",
+    "dark-mode",
+    "official",
+    "public-roadmap",
+    "rtl-support",
+    "fully-typed",
+    "nuxt-only",
+    "form-helpers",
+    "figma-files"
+  ]
 }

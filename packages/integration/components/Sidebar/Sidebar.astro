@@ -5,6 +5,7 @@ import options from "virtual:choose-tech/options";
 import { SearchQuery } from "../../utils/search-query";
 import SidebarLink from "./SidebarLink.astro";
 import { version } from "../../package.json"
+import Preferences from "./Preferences.astro";
 
 const { title } = options;
 
@@ -26,6 +27,7 @@ const categories = (await getCategories()).map((data) => ({
   />
   <span class="ml-2 text-2xl font-bold">{title}</span>
 </a>
+<Preferences />
 <div>
   <h3 class="px-4 pt-3 text-lg font-bold">Categories</h3>
   {

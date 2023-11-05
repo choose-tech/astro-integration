@@ -59,6 +59,12 @@ export const defineConfig = (
               prerender: true,
             });
 
+            injectRoute({
+              pattern: "/api/preferences",
+              entryPoint: "@choose-tech/astro/pages/api/preferences.ts",
+              prerender: false,
+            });
+
             const newConfig: Partial<AstroConfig> = {
               vite: {
                 plugins: [vitePluginVirtualImports(options, config)],
