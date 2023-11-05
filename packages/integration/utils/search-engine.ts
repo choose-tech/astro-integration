@@ -30,20 +30,17 @@ export class SearchEngine {
         if (!hasMatch) return false;
       }
 
-      if (categories.length > 0) {
-        if (lib.categories.length === 0) {
-          return false;
-        }
-
-        let hasMatch = false;
-
+      for (const categoryId of categories) {
+        let found = false;
         for (const category of lib.categories) {
-          if (!hasMatch && categories.includes(category.id)) {
-            hasMatch = true;
+          if (category.id === categoryId) {
+            found = true;
+            break;
           }
         }
-
-        if (!hasMatch) return false;
+        if (!found) {
+          return false;
+        }
       }
 
       return true;
