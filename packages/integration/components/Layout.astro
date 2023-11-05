@@ -68,7 +68,8 @@ const injectedStyle = `
       <Sidebar />
     </div>
     <Header />
-    <main class="p-6">
+    {/* TODO: remove overflow x when moving tooltip to floating ui */}
+    <main class="p-6 overflow-x-hidden">
       <slot />
     </main>
     <Footer />
