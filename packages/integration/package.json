@@ -1,6 +1,6 @@
 {
   "name": "@choose-tech/astro",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "private": false,
   "description": "Official Choose Tech Astro integration, which powers any comparison of the Choose Tech organization",
   "scripts": {},
