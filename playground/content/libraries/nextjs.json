@@ -6,7 +6,6 @@
     "owner": "vercel",
     "name": "next.js"
   },
-  "packages": ["next"],
   "equivalents": ["nuxt"],
   "implies": ["reactjs"],
   "categories": ["meta-framework"]

@@ -9,7 +9,7 @@ export const npmDataIntegration = () => {
     destinationCollectionPath: NPM_PATH,
     getEntrySlugs: (fileContent) => {
       const { packages } = fileContent;
-      return packages;
+      return packages ?? [];
     },
     fetchData: async (slug) => {
       const data = await fetch(
