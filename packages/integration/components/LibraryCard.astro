@@ -108,7 +108,7 @@ searchQuery.toggle("implies", library.id);
                 .map((id) => libraries.find((l) => l.id === id)!)
                 .map((lib) => (
                   <a
-                    href={`/?q=${lib.name}`}
+                    href={`?q=${lib.name}`}
                     class="mb-1 mr-1 transition-opacity hover:opacity-75"
                   >
                     <Image
@@ -132,7 +132,7 @@ searchQuery.toggle("implies", library.id);
                 .map((id) => libraries.find((l) => l.id === id)!)
                 .map((lib) => (
                   <a
-                    href={`/?q=${lib.name}`}
+                    href={`?q=${lib.name}`}
                     class="mb-1 mr-1 transition-opacity hover:opacity-75"
                   >
                     <Image
