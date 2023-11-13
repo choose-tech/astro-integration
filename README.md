@@ -13,6 +13,6 @@ For usage, check out the [official template](https://github.com/choose-tech/temp
 - Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable`
 - Install dependencies using `pnpm install`
 
-## LICENSE
+## License
 
 Published under [MIT License](./LICENSE).
