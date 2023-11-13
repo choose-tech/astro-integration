@@ -4,7 +4,11 @@ This repository holds the code for the Choose Tech Astro integration, which powe
 
 ## Usage
 
-For usage, check out the [official template](https://github.com/choose-tech/template).
+Want to create a new comparison? Check out the [official template](https://github.com/choose-tech/template).
+
+## Working with comparisons
+
+Check out the dedicated guide [here](./docs/comparisons.md).
 
 ## Development
 
